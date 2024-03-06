@@ -23,7 +23,7 @@ List<Person> persons = [
     profession: 'Software Engineer',
     profilePicture: 'assets/profile.png',
     phone: '+1234567890',
-    email: 'albiona@example.com',
+    email: 'albiona@email.com',
   ),
   Person(
     name: 'Farah Adilah Hasan',
@@ -31,7 +31,7 @@ List<Person> persons = [
     profession: 'UX Designer',
     profilePicture: 'assets/profile.png',
     phone: '+1234567891',
-    email: 'farah@example.com',
+    email: 'farah@email.com',
   ),
   Person(
     name: 'Zahroh Salsabila',
@@ -39,6 +39,6 @@ List<Person> persons = [
     profession: 'Data Scientist',
     profilePicture: 'assets/profile.png',
     phone: '+1234567892',
-    email: 'zahroh@example.com',
+    email: 'zahroh@email.com',
   ),
 ];
