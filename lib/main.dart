@@ -26,6 +26,8 @@ class CVDetailList extends StatelessWidget {
       appBar: AppBar(
         title: Text('CV List'),
       ),
+      // Changed the background color
+      backgroundColor: Colors.grey[200],
       body: ListView.builder(
         itemCount: persons.length,
         itemBuilder: (BuildContext context, int index) {
@@ -36,10 +38,17 @@ class CVDetailList extends StatelessWidget {
   }
 }
 
-class CVDetail extends StatelessWidget {
+class CVDetail extends StatefulWidget {
   final Person person;
 
   CVDetail({required this.person});
+
+  @override
+  _CVDetailState createState() => _CVDetailState();
+}
+
+class _CVDetailState extends State<CVDetail> {
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,28 +58,81 @@ class CVDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
-            backgroundImage: AssetImage(person.profilePicture),
+            backgroundImage: AssetImage(widget.person.profilePicture),
             radius: 50.0,
           ),
           SizedBox(height: 20.0),
           Text(
-            'Name: ${person.name}',
+            'Name: ${widget.person.name}',
             style: TextStyle(fontSize: 20.0),
           ),
           SizedBox(height: 10.0),
           Text(
-            'ID: ${person.id}',
+            'ID: ${widget.person.id}',
             style: TextStyle(fontSize: 18.0),
           ),
           SizedBox(height: 10.0),
           Text(
-            'Profession: ${person.profession}',
+            'Profession: ${widget.person.profession}',
             style: TextStyle(fontSize: 18.0),
           ),
           SizedBox(height: 10.0),
-          Text(
-            'Bio: ${person.bio}',
-            style: TextStyle(fontSize: 16.0),
+          // Wrapped bio text with GestureDetector to enable expansion
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isExpanded = !isExpanded;
+              });
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Bio: ',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    Icon(
+                      isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                      // Changed the color of arrow icon
+                      color: Colors.blue,
+                    ),
+                  ],
+                ),
+                // Added conditional widget for expanding bio
+                isExpanded
+                    ? Text(
+                        '${widget.person.bio}',
+                        style: TextStyle(fontSize: 16.0),
+                      )
+                    : Container(),
+              ],
+            ),
+          ),
+          SizedBox(height: 10.0),
+          // Added phone number with icon
+          Row(
+            children: [
+              Icon(Icons.phone),
+              SizedBox(width: 5.0),
+              Text(
+                'Phone: ${widget.person.phone}',
+                style: TextStyle(fontSize: 16.0),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.0),
+          // Added email with icon
+          Row(
+            children: [
+              Icon(Icons.email),
+              SizedBox(width: 5.0),
+              Text(
+                'Email: ${widget.person.email}',
+                style: TextStyle(fontSize: 16.0),
+              ),
+            ],
           ),
         ],
       ),
