@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'person.dart'; // Importing the Person class from person.dart file
+import 'person.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CVDetailList(persons: persons), // Passing the list of persons to CVDetailList widget
+      home: CVDetailList(persons: persons),
     );
   }
 }
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 class CVDetailList extends StatelessWidget {
   final List<Person> persons; // List of persons
 
-  CVDetailList({required this.persons}); // Constructor to initialize the list
+  CVDetailList({required this.persons}); 
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CVDetailList extends StatelessWidget {
       appBar: AppBar(
         title: Text('CV List'),
       ),
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.grey[500],
       body: ListView.builder(
         itemCount: persons.length, // Number of persons in the list
         itemBuilder: (BuildContext context, int index) {
@@ -45,7 +45,7 @@ class CVDetailList extends StatelessWidget {
                 ),
               ],
             ),
-            child: CVDetail(person: persons[index]), // Passing each person to CVDetail widget
+            child: CVDetail(person: persons[index]),
           );
         },
       ),
@@ -54,10 +54,9 @@ class CVDetailList extends StatelessWidget {
 }
 
 class CVDetail extends StatelessWidget {
-  final Person person; // Person object
+  final Person person; 
 
-  CVDetail({required this.person}); // Constructor to initialize person
-
+  CVDetail({required this.person}); 
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -90,8 +89,8 @@ class CVDetail extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconTextButton(icon: Icons.phone, text: person.phone), // Phone icon and number
-            IconTextButton(icon: Icons.email, text: person.email), // Email icon and address
+            IconTextButton(icon: Icons.phone, text: person.phone), 
+            IconTextButton(icon: Icons.email, text: person.email),
           ],
         ),
       ],
@@ -103,7 +102,7 @@ class IconTextButton extends StatelessWidget {
   final IconData icon; // Icon data
   final String text; // Text
 
-  IconTextButton({required this.icon, required this.text}); // Constructor
+  IconTextButton({required this.icon, required this.text}); 
 
   @override
   Widget build(BuildContext context) {
@@ -115,11 +114,11 @@ class IconTextButton extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, size: 16.0), // Adjusted icon size
+          Icon(icon, size: 16.0), 
           SizedBox(width: 3.0),
           Text(
             text,
-            style: TextStyle(fontSize: 10.0), // Adjusted font size
+            style: TextStyle(fontSize: 10.0), 
           ),
         ],
       ),
