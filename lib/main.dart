@@ -29,7 +29,7 @@ class CVDetailList extends StatelessWidget {
       body: ListView.builder(
         itemCount: persons.length,
         itemBuilder: (BuildContext context, int index) {
-          return CVDetail(person: persons[index]); 
+          return CVDetail(person: persons[index]);
         },
       ),
     );
