@@ -59,7 +59,7 @@ class CVDetail extends StatelessWidget {
           ),
           SizedBox(height: 10.0),
           Text(
-            'ID: ${person.id}', // Displaying the 'id' field
+            'ID: ${person.id}',
             style: TextStyle(fontSize: 18.0),
           ),
           SizedBox(height: 10.0),
