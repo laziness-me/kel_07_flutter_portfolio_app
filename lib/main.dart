@@ -26,12 +26,13 @@ class CVDetailList extends StatelessWidget {
       appBar: AppBar(
         title: Text('CV List'),
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[400],
       body: ListView.builder(
         itemCount: persons.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
             margin: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10.0),
@@ -44,33 +45,9 @@ class CVDetailList extends StatelessWidget {
                 ),
               ],
             ),
-            child: Row(
-              children: [
-                // Display profile picture with larger radius
-                ProfilePicture(profilePicture: persons[index].profilePicture),
-                // Display person details
-                Expanded(child: CVDetail(person: persons[index])),
-              ],
-            ),
+            child: CVDetail(person: persons[index]),
           );
         },
-      ),
-    );
-  }
-}
-
-class ProfilePicture extends StatelessWidget {
-  final String profilePicture;
-
-  ProfilePicture({required this.profilePicture});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10.0),
-      child: CircleAvatar(
-        backgroundImage: AssetImage(profilePicture),
-        radius: 50.0, // Increased radius
       ),
     );
   }
@@ -86,25 +63,30 @@ class CVDetail extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        CircleAvatar(
+          backgroundImage: AssetImage(person.profilePicture),
+          radius: 40.0, 
+        ),
+        SizedBox(height: 5.0),
         Text(
           person.profession.toUpperCase(),
           style: TextStyle(
-            fontSize: 16.0,
+            fontSize: 14.0,
             fontWeight: FontWeight.bold,
             letterSpacing: 1.0,
           ),
         ),
-        SizedBox(height: 5.0),
+        SizedBox(height: 3.0),
         Text(
           person.name,
-          style: TextStyle(fontSize: 14.0),
-        ),
-        SizedBox(height: 5.0),
-        Text(
-          person.id,
           style: TextStyle(fontSize: 12.0),
         ),
-        SizedBox(height: 10.0),
+        SizedBox(height: 3.0),
+        Text(
+          person.id,
+          style: TextStyle(fontSize: 10.0),
+        ),
+        SizedBox(height: 5.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -126,16 +108,19 @@ class IconTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(6.0), // Adjusted padding
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(8.0), // Adjusted border radius
         color: Colors.grey[300],
       ),
       child: Row(
         children: [
-          Icon(icon),
-          SizedBox(width: 5.0),
-          Text(text),
+          Icon(icon, size: 16.0), // Adjusted icon size
+          SizedBox(width: 3.0),
+          Text(
+            text,
+            style: TextStyle(fontSize: 10.0), // Adjusted font size
+          ),
         ],
       ),
     );
