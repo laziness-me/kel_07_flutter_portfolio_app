@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 }
 
 class CVDetailList extends StatelessWidget {
-  final List<Person> persons; // List of persons
+  final List<Person> persons;
 
   CVDetailList({required this.persons});
 
