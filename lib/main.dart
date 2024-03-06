@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'person.dart';
+import 'person.dart'; // Importing the Person class from person.dart file
 
 void main() {
   runApp(MyApp());
@@ -10,15 +10,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CVDetailList(persons: persons),
+      home: CVDetailList(persons: persons), // Passing the list of persons to CVDetailList widget
     );
   }
 }
 
 class CVDetailList extends StatelessWidget {
-  final List<Person> persons;
+  final List<Person> persons; // List of persons
 
-  CVDetailList({required this.persons});
+  CVDetailList({required this.persons}); // Constructor to initialize the list
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class CVDetailList extends StatelessWidget {
       ),
       backgroundColor: Colors.grey[400],
       body: ListView.builder(
-        itemCount: persons.length,
+        itemCount: persons.length, // Number of persons in the list
         itemBuilder: (BuildContext context, int index) {
           return Container(
             margin: EdgeInsets.all(10.0),
@@ -45,7 +45,7 @@ class CVDetailList extends StatelessWidget {
                 ),
               ],
             ),
-            child: CVDetail(person: persons[index]),
+            child: CVDetail(person: persons[index]), // Passing each person to CVDetail widget
           );
         },
       ),
@@ -54,9 +54,9 @@ class CVDetailList extends StatelessWidget {
 }
 
 class CVDetail extends StatelessWidget {
-  final Person person;
+  final Person person; // Person object
 
-  CVDetail({required this.person});
+  CVDetail({required this.person}); // Constructor to initialize person
 
   @override
   Widget build(BuildContext context) {
@@ -64,12 +64,12 @@ class CVDetail extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CircleAvatar(
-          backgroundImage: AssetImage(person.profilePicture),
+          backgroundImage: AssetImage(person.profilePicture), 
           radius: 40.0, 
         ),
         SizedBox(height: 5.0),
         Text(
-          person.profession.toUpperCase(),
+          person.profession.toUpperCase(), 
           style: TextStyle(
             fontSize: 14.0,
             fontWeight: FontWeight.bold,
@@ -78,20 +78,20 @@ class CVDetail extends StatelessWidget {
         ),
         SizedBox(height: 3.0),
         Text(
-          person.name,
+          person.name, 
           style: TextStyle(fontSize: 12.0),
         ),
         SizedBox(height: 3.0),
         Text(
-          person.id,
+          person.id, 
           style: TextStyle(fontSize: 10.0),
         ),
         SizedBox(height: 5.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconTextButton(icon: Icons.phone, text: person.phone),
-            IconTextButton(icon: Icons.email, text: person.email),
+            IconTextButton(icon: Icons.phone, text: person.phone), // Phone icon and number
+            IconTextButton(icon: Icons.email, text: person.email), // Email icon and address
           ],
         ),
       ],
@@ -100,17 +100,17 @@ class CVDetail extends StatelessWidget {
 }
 
 class IconTextButton extends StatelessWidget {
-  final IconData icon;
-  final String text;
+  final IconData icon; // Icon data
+  final String text; // Text
 
-  IconTextButton({required this.icon, required this.text});
+  IconTextButton({required this.icon, required this.text}); // Constructor
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(6.0), // Adjusted padding
+      padding: EdgeInsets.all(6.0), 
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0), // Adjusted border radius
+        borderRadius: BorderRadius.circular(8.0),
         color: Colors.grey[300],
       ),
       child: Row(
